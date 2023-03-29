@@ -1,7 +1,7 @@
 import os
 from box.exceptions import BoxValueError
-from cnnClassifier.logger import logging
 import yaml
+from cnnClassifier.logger import logging
 import json
 import joblib
 from ensure import ensure_annotations
@@ -33,7 +33,7 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
         raise ValueError("yaml file is empty")
     except Exception as e:
         raise e
-    
+
 @ensure_annotations
 def create_directories(path_to_directories: list, verbose=True):
     """create list of directories
