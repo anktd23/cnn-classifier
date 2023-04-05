@@ -2,6 +2,7 @@ cnn-classifier
 artifacts
 st_01.ipynb
 st_02.ipynb
+st_03.ipynb
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
