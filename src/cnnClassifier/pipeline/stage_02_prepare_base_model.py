@@ -1,6 +1,6 @@
 from cnnClassifier.config import ConfigurationManager
 from cnnClassifier.components import PrepareBaseModel
-from cnnClassifier.logger import logging
+from cnnClassifier import logger
 
 class PrepareBaseModelTrainingPipeline:
     def __init__(self):

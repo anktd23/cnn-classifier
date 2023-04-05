@@ -4,7 +4,7 @@ from zipfile import ZipFile
 from tqdm import tqdm
 from pathlib import Path
 from cnnClassifier.entity import DataIngestionConfig
-from cnnClassifier.logger import logging
+from cnnClassifier import logger
 from cnnClassifier.utils import get_size
 
 
@@ -13,16 +13,16 @@ class DataIngestion:
         self.config = config
 
     def download_file(self):
-        logging.info("Trying to download file...")
+        logger.info("Trying to download file...")
         if not os.path.exists(self.config.local_data_file):
-            logging.info("Download started...")
+            logger.info("Download started...")
             filename, headers = request.urlretrieve(
                 url=self.config.source_URL,
                 filename=self.config.local_data_file
             )
-            logging.info(f"{filename} download! with following info: \n{headers}")
+            logger.info(f"{filename} download! with following info: \n{headers}")
         else:
-            logging.info(f"File already exists of size: {get_size(Path(self.config.local_data_file))}")        
+            logger.info(f"File already exists of size: {get_size(Path(self.config.local_data_file))}")        
 
     def _get_updated_list_of_files(self, list_of_files):
         return [f for f in list_of_files if f.endswith(".jpg") and ("Cat" in f or "Dog" in f)]
@@ -33,11 +33,11 @@ class DataIngestion:
             zf.extract(f, working_dir)
         
         if os.path.getsize(target_filepath) == 0:
-            logging.info(f"removing file:{target_filepath} of size: {get_size(Path(target_filepath))}")
+            logger.info(f"removing file:{target_filepath} of size: {get_size(Path(target_filepath))}")
             os.remove(target_filepath)
 
     def unzip_and_clean(self):
-        logging.info(f"unzipping file and removing unawanted files")
+        logger.info(f"unzipping file and removing unawanted files")
         with ZipFile(file=self.config.local_data_file, mode="r") as zf:
             list_of_files = zf.namelist()
             updated_list_of_files = self._get_updated_list_of_files(list_of_files)
