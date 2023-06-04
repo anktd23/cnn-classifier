@@ -1,11 +1,16 @@
 cnn-classifier
-research
-trials.ipynb
 artifacts
+logs
+research
 st_01.ipynb
 st_02.ipynb
 st_03.ipynb
 st_04.ipynb
+st_05.ipynb
+trials.ipynb
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -135,3 +140,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+artifacts/*
